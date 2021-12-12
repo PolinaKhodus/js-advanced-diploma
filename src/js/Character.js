@@ -5,6 +5,8 @@ export default class Character {
     this.defence = 0;
     this.health = 50;
     this.type = type;
-    // TODO: throw error if user use "new Character()"
+    if (new.target === Character) {
+      throw Error('You cannot create new object of Character. Please, use inherited classes');
+    }
   }
 }
