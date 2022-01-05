@@ -1,22 +1,38 @@
+/* eslint-disable linebreak-style */
 import { calcTileType } from '../utils';
 
-test('render map', () => {
-  let index = 0;
-  expect(calcTileType(index)).toEqual('top-left');
-  index = 7;
-  expect(calcTileType(index)).toEqual('top-right');
-  index = 56;
-  expect(calcTileType(index)).toEqual('bottom-left');
-  index = 63;
-  expect(calcTileType(index)).toEqual('bottom-right');
-  index = 5;
-  expect(calcTileType(index)).toEqual('top');
-  index = 60;
-  expect(calcTileType(index)).toEqual('bottom');
-  index = 32;
-  expect(calcTileType(index)).toEqual('left');
-  index = 23;
-  expect(calcTileType(index)).toEqual('right');
-  index = 20;
-  expect(calcTileType(index)).toEqual('center');
+test('top-left, boardSize=8', () => {
+  expect(calcTileType(0, 8)).toBe('top-left');
+});
+
+test('top, boardSize=8', () => {
+  expect(calcTileType(2, 8)).toBe('top');
+});
+
+test('top-right, boardSize=7', () => {
+  expect(calcTileType(7, 8)).toBe('top-right');
+});
+
+test('left, boardSize=8', () => {
+  expect(calcTileType(8, 8)).toBe('left');
+});
+
+test('right, boardSize=8', () => {
+  expect(calcTileType(15, 8)).toBe('right');
+});
+
+test('bottom-left, boardSize=8', () => {
+  expect(calcTileType(56, 8)).toBe('bottom-left');
+});
+
+test('bottom, boardSize=8', () => {
+  expect(calcTileType(58, 8)).toBe('bottom');
+});
+
+test('bottom-right, boardSize=8', () => {
+  expect(calcTileType(63, 8)).toBe('bottom-right');
+});
+
+test('center, boardSize=8', () => {
+  expect(calcTileType(35, 8)).toBe('center');
 });
