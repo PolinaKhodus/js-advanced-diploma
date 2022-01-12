@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const themes = {
   prairie: 'prairie',
   desert: 'desert',

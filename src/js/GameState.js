@@ -1,6 +1,9 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
+/* eslint-disable linebreak-style */
 export default class GameState {
   static from(object) {
-    // TODO: create object
-    return null;
+    if (typeof object === 'object' && !Array.isArray(object)) return object;
+       return null;
   }
 }

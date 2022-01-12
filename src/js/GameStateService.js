@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 export default class GameStateService {
   constructor(storage) {
     this.storage = storage;

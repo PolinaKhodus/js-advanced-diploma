@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+import randomInteger from './functions';
 /**
  * Generates random characters
  *
@@ -6,20 +8,20 @@
  * @returns Character type children (ex. Magician, Bowman, etc)
  */
 export function* characterGenerator(allowedTypes, maxLevel) {
-  const randomIndex = getRandomInt(allowedTypes.length);
-  const RandomItemType = allowedTypes[randomIndex];
-  yield new RandomItemType(maxLevel);
+  const randomClass = new allowedTypes[randomInteger(0, allowedTypes.length - 1)]();
+  const randomLevel = randomInteger(1, maxLevel);
+  randomClass.level = randomLevel;
+  for (let i = 1; randomClass.level > i; i += 1) {
+    randomClass.levelUp();
+    randomClass.level -= 1;
+  }
+  yield randomClass;
 }
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-
-  export function generateTeam(allowedTypes, maxLevel, characterCount) {
-    const membersTeam = [];
-    while (membersTeam.length !== characterCount) {
-      const member = characterGenerator(allowedTypes, maxLevel).next().value;
-      membersTeam.push(member);
-    }
-  
-    return membersTeam;
+export function generateTeam(allowedTypes, maxLevel, characterCount) {
+  const team = [];
+  for (let i = 0; i < characterCount; i += 1) {
+    team.push(characterGenerator(allowedTypes, maxLevel).next().value);
   }
+  return team;
+}

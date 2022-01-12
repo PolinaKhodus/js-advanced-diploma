@@ -1,22 +1,16 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
+/* eslint-disable linebreak-style */
 export function calcTileType(index, boardSize) {
-  let square = '';
-
-  if (index < boardSize) { square = 'top'; }
-  if (index > boardSize ** 2 - boardSize - 1) { square = 'bottom'; }
-
-  if (index === boardSize - boardSize
-    || index === boardSize - 1
-    || index === boardSize ** 2 - boardSize
-    || index === boardSize ** 2 - 1) {
-    square += '-';
-  }
-
-  if (index % boardSize === boardSize - 1) { square += 'right'; }
-  if (index % boardSize === 0) { square += 'left'; }
-
-  if (!square) { return 'center'; }
-
-  return square;
+  if (index === 0) return 'top-left';
+  if (index === 7) return 'top-right';
+  if (index === 56) return 'bottom-left';
+  if (index === 63) return 'bottom-right';
+  if (index > 0 && index < 7) return 'top';
+  if (index > 56 && index < 63) return 'bottom';
+  if (index % 8 === 0) return 'left';
+  if (index % 8 === 7) return 'right';
+  return 'center';
 }
 
 export function calcHealthLevel(health) {
